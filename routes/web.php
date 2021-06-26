@@ -1,5 +1,6 @@
 <?php
 
+//use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -291,19 +292,19 @@ Route::group(['prefix'=>'admin', 'middleware'=>['admin']], function (){
 
 
     /*======================Add CMS Pages (admin)==================================*/
-    Route::match(['get','post'],'/cms/add','CmsController@addCmsPage')->name('admin.addCmsPage');
+//    Route::match(['get','post'],'/cms/add','CmsController@addCmsPage')->name('admin.addCmsPage');
 
     /*======================View CMS Route (admin)==================================*/
-    Route::get('/cms/view','CmsController@viewCmsPage')->name('admin.viewCmsPages');
+//    Route::get('/cms/view','CmsController@viewCmsPage')->name('admin.viewCmsPages');
 
     /*======================Delete CMS Route (admin)==================================*/
-    Route::get('/cms/delete/{id}','CmsController@deleteCmsPage')->name('admin.deleteCmsPage');
+//    Route::get('/cms/delete/{id}','CmsController@deleteCmsPage')->name('admin.deleteCmsPage');
 
     /*======================Update CMS Route (admin)==================================*/
-    Route::match(['get','post'],'/cms/update/{id}','CmsController@updateCmsPage')->name('admin.editCms');
+//    Route::match(['get','post'],'/cms/update/{id}','CmsController@updateCmsPage')->name('admin.editCms');
 
     /*======================About CMS Route (admin)==================================*/
-    Route::match(['get', 'post'],'/page/{url}', 'CmsController@cmsPage')->name('page');
+//    Route::match(['get', 'post'],'/page/{url}', 'CmsController@cmsPage')->name('page');
 
 
     /*-----------------------------------------ORDERS ROUTE BEGINGS----------------------------------------*/
@@ -320,6 +321,10 @@ Route::group(['prefix'=>'admin', 'middleware'=>['admin']], function (){
     /*======================Admin Update Order Status Route (User)==================================*/
     Route::post('/view-order-status','ProductsController@updateOrderStatus')->name('admin.updateOrderStatus');
     Route::get('/view-order-charts','AdminController@orderChart')->name('admin.order.chart');
+
+    /*========================================== Team =============*/
+    Route::resource('teams', TeamController::class);
+
 
     /*==========================================employee/payments=============*/
     Route::get('/employees/{any?}', function () {
@@ -352,53 +357,7 @@ Route::post('customers/order/placing', ['uses'=>'CustomersController@order_place
 
 Route::get('/customer/deactivate/{id}', ['uses'=>'UsersController@deactivate', 'as'=>'customer.deactivate']);
 Route::get('/customer/activate/{id}', ['uses'=>'UsersController@activate', 'as'=>'customer.activate']);
-//Route::post('/customers/category/store', ['uses'=>'CustomerCategoryController@store', 'as'=>'customers.category.store']);
 
-//Route::get('/customers/category/edit/{id}', ['uses'=>'CustomerCategoryController@edit', 'as'=>'customers.category.edit']);
-//
-//Route::post('/customers/category/update/{id}', ['uses'=>'CustomerCategoryController@update', 'as'=>'customers.category.update']);
-//
-//Route::get('/customers/category/delete/{id}', ['uses'=>'CustomerCategoryController@destroy', 'as'=>'customers.category.delete']);
-/*-----------------------------------------CUSTOMERS CATEGORIES ROUTE END----------------------------------------*/
-
-/*-----------------------------------------CUSTOMERS LOCATIONS ROUTE START----------------------------------------*/
-//Route::get('/customers/areas', ['uses'=>'AreasController@index', 'as'=>'areas']);
-//
-//Route::post('/customers/areas/store', ['uses'=>'AreasController@store', 'as'=>'areas.store']);
-//
-////Route::get('/customers/areas/edit/{id}', ['uses'=>'AreasController@edit', 'as'=>'areas.edit']);
-//
-//Route::post('/customers/areas/update/{id}', ['uses'=>'AreasController@update', 'as'=>'areas.update']);
-//
-//Route::get('/customers/areas/delete/{id}', ['uses'=>'AreasController@destroy', 'as'=>'areas.delete']);
-/*-----------------------------------------CUSTOMERS LOCATIONS ROUTE END----------------------------------------*/
-
-/*-----------------------------------------CUSTOMERS ROUTE START----------------------------------------*/
-//Route::get('/customers', ['uses'=>'CustomersController@index', 'as'=>'customers']);
-
-//Route::get('/customers/categories', ['uses'=>'CustomersController@categories', 'as'=>'customers.categories']);
-
-//Route::get('/customer/create', ['uses'=>'CustomersController@create', 'as'=>'customer.create']);
-//
-//Route::post('/customer/store', ['uses'=>'CustomersController@store', 'as'=>'customer.store']);
-//
-//Route::get('/customer/edit/{id}', ['uses'=>'CustomersController@edit', 'as'=>'customer.edit']);
-//
-//Route::post('/customer/update/{id}', ['uses'=>'CustomersController@update', 'as'=>'customer.update']);
-//
-//Route::get('/customer/delete/{id}', ['uses'=>'CustomersController@delete', 'as'=>'customer.delete']);
-//
-//Route::get('/customers/deactivated', ['uses'=>'CustomersController@trashes', 'as'=>'customers.trashes']);
-//
-
-//
-//Route::get('/customer/restore/{id}', ['uses'=>'CustomersController@restore', 'as'=>'customer.restore']);
-//
-//Route::post('/customer/profile/update/{id}',['uses'=>'CustomersController@update', 'as'=>'customer.profile.update']);
-//
-//Route::get('/customers/locations', ['uses'=>'CustomersController@locations', 'as'=>'customers.locations']);
-//
-//Route::resource('customer/area', 'CustomerAreasController');
 
 /*-----------------------------------------CUSTOMERS ROUTE END----------------------------------------*/
 

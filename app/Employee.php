@@ -36,6 +36,11 @@ class Employee extends Model
         return $this->belongsTo(Payment::class);
     }
 
+    public function team()
+    {
+        return $this->belongsTo(Team::class);
+    }
+
 //    public static function getEmployeePaymentType($em)
 //    {
 //

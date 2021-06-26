@@ -493,14 +493,7 @@
                             </p>
                         </a>
                         <ul class="nav nav-treeview">
-                            {{--                            @if(Session::get('adminDetails')['store_move_access']==1 || Session::get('adminDetails')['type']=='Admin')--}}
-                            {{--                                <li class="nav-item">--}}
-                            {{--                                    <a href="{{route('products.finished')}}" class="nav-link {{Request::is('admin/store/move/product') ? 'active' : ''}}">--}}
-                            {{--                                        <i class="far fa-circle nav-icon"></i>--}}
-                            {{--                                        <p>Move Products to Store</p>--}}
-                            {{--                                    </a>--}}
-                            {{--                                </li>--}}
-                            {{--                            @endif--}}
+
                             @if(Session::get('adminDetails')['store_view_access']==1 || Session::get('adminDetails')['type']=='Admin')
                                 <li class="nav-item">
                                     <a href="{{route('store')}}" class="nav-link {{Request::is('admin/store/view') ? 'active' : ''}}">
@@ -516,6 +509,40 @@
                     </li>
                 @endif
 
+
+                <li class="nav-item has-treeview {{Request::is('admin/teams*') ? 'menu-open' : ''}}">
+                    <a href="" class="nav-link {{Request::is('admin/teams*') ? 'active' : ''}}" >
+                        <i class="nav-icon fa fa-users-cog"></i>
+                        <p>
+                            Team Management
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        @if( Session::get('adminDetails')['type']=='Admin')
+                            <li class="nav-item">
+                                <a href="{{route('teams.index')}}" class="nav-link {{Request::is('admin/teams') ? 'active' : ''}}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        View Teams
+                                    </p>
+                                </a>
+
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('teams.create')}}" class="nav-link {{Request::is('admin/teams/create') ? 'active' : ''}}">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>
+                                        Create Team
+                                    </p>
+                                </a>
+
+                            </li>
+                        @endif
+                    </ul>
+                </li>
+
+
                 @if(Session::get('adminDetails')['type']=='Admin')
                     <li class="nav-item has-treeview {{Request::is('filemanager/filemanager') ? 'menu-open' : ''}}">
                         <a href="{{url('/filemanager/filemanager')}}" class="nav-link {{Request::is('filemanager/filemanager') ? 'active' : ''}}" >
@@ -524,20 +551,6 @@
                                 My Drive
                             </p>
                         </a>
-                        {{--                        <ul class="nav nav-treeview">--}}
-                        {{--                            <li class="nav-item">--}}
-                        {{--                                <a href="{{route('admin.addCmsPage')}}" class="nav-link {{Request::is('admin/cms/add') ? 'active' : ''}}">--}}
-                        {{--                                    <i class="far fa-circle nav-icon"></i>--}}
-                        {{--                                    <p>Add CMS Page</p>--}}
-                        {{--                                </a>--}}
-                        {{--                            </li>--}}
-                        {{--                            <li class="nav-item">--}}
-                        {{--                                <a href="{{route('admin.viewCmsPages')}}" class="nav-link {{Request::is('admin/cms/view') ? 'active' : ''}}">--}}
-                        {{--                                    <i class="far fa-circle nav-icon"></i>--}}
-                        {{--                                    <p>View CMS Pages</p>--}}
-                        {{--                                </a>--}}
-                        {{--                            </li>--}}
-                        {{--                        </ul>--}}
                     </li>
                 @endif
             </ul>
