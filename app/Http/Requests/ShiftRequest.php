@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TeamRequest extends FormRequest
+class ShiftRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,11 @@ class TeamRequest extends FormRequest
     public function rules()
     {
         return [
-            'employee_id'=>'required',
-            'unit'=>'required',
+            'team_id'=>'required',
+            'start_time'=>'required',
+            'break_from'=>'required',
+            'break_to'=>'required',
+            'close_time'=>'required',
             'name'=>'required|unique:teams',
         ];
     }

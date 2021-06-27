@@ -325,6 +325,8 @@ Route::group(['prefix'=>'admin', 'middleware'=>['admin']], function (){
     /*========================================== Team =============*/
     Route::resource('teams', TeamController::class);
 
+    /*========================================== Shift =============*/
+    Route::resource('shift', ShiftController::class);
 
     /*==========================================employee/payments=============*/
     Route::get('/employees/{any?}', function () {
